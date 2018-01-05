@@ -50,3 +50,11 @@ class Life(models.Model):
     name = models.CharField(max_length=50, blank=True, null=True)
     created_at = models.DateTimeField()
     updated_at = models.DateTimeField()
+
+    def delete(self, *args, **kwargs):
+        # You have to prepare what you need before delete the model
+        storage, path = self.image.storage, self.image.path
+        # Delete the model before the file
+        super(Life, self).delete(*args, **kwargs)
+        # Delete the file after the model
+        storage.delete(path)
