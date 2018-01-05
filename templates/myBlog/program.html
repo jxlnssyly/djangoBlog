@@ -1,0 +1,47 @@
+{%extends 'baseTemplates/base.html'%}
+{% load custom %}
+
+{% load staticfiles %}
+
+
+{% block title %} 细 雨 听 风 {% endblock title %}
+
+{% block body %}
+
+                    <div class="copyrights">Designd by  <a href="http://www.liaoyann.com/" >Scott</a></div>
+
+				<!-- Main -->
+					<div id="main">
+                        {% for item in dataList %}
+                            <!-- Post -->
+							<article class="post">
+
+								<header>
+									<div class="title">
+										<h2><a href="/detail/{{ item.id }}/">{{ item.title }}</a></h2>
+										<p>{{ item.name }}</p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="{{ item.created_at }}">{{ item.created_at.month | eng_month }} {{ item.created_at.day }}, {{ item.created_at.year }}</time>
+										<a href="#" class="author"><span class="name">Scott</span><img src="{% static "myBlog/images/avatar.jpg"%}" alt="{% static "myBlog/images/avatar.jpg"%}" /></a>
+									</div>
+								</header>
+{#								<a href="#" class="image featured"><img src="{% static "myBlog/images/pic01.jpg"%}" alt="" /></a>#}
+								<p id="content{{ forloop.counter }}">{{ item.get_desc }}</p>
+								<footer>
+									<ul class="actions">
+{#										<li><a href="javascript:void(0);" class="button big" index="{{ forloop.counter }}"></a></li>#}
+									</ul>
+									<ul class="stats">
+										<li><a href="/detail/{{ item.id }}/">General</a></li>
+										<li><a href="javascript:void(0);" class="icon fa-heart">{{ item.get_likes }}</a></li>
+										<li><a href="/detail/{{ item.id }}/#SOHUCS" class="icon fa-comment"></a></li>
+									</ul>
+								</footer>
+							</article>
+                        {% endfor %}
+
+
+					</div>
+
+{% endblock body %}
