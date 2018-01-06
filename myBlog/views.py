@@ -7,7 +7,9 @@ from django.core.paginator import *
 from django.core import serializers
 from django.http import HttpResponse
 from joke import Joke
+from django.views.decorators.cache import cache_page
 
+@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def index(request):
 
     # 首页博客数据
@@ -58,10 +60,10 @@ def index(request):
 
     return render(request,'myBlog/index.html',contex)
 
-
 def comment(request):
     return render(request,'myBlog/comment.html')
 
+@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def program(request):
     qureyList = Articles.objects.filter(keyword="编程").order_by("-created_at")
     contex = {
@@ -70,6 +72,7 @@ def program(request):
     }
     return render(request, 'myBlog/program.html', contex)
 
+@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def detail(request,id):
     data = Articles.objects.filter(id=id)[0]
     last = Articles.objects.last() # 返回的是对象
@@ -92,8 +95,6 @@ def detail(request,id):
         if len(pre_set):
             pre_id = pre_set.first().id
             pre_title = pre_set.first().title
-    # return HttpResponse('next_id: %s pre_id: %s' % (next_id, pre_id))
-
     contex = {
         'item': data,
         'has_next': has_next,
@@ -106,6 +107,7 @@ def detail(request,id):
     }
     return render(request,'myBlog/detail.html',contex)
 
+@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def blog(request):
     qureyList = Articles.objects.filter(keyword="博客").order_by("-created_at")
     contex = {
@@ -114,7 +116,7 @@ def blog(request):
     }
     return render(request, 'myBlog/program.html', contex)
 
-
+@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def life(request):
 
     queryList = Articles.objects.filter(keyword="生活").order_by("-created_at")
@@ -123,7 +125,7 @@ def life(request):
     }
     return render(request,'myBlog/life.html',contex)
 
-# 全文检索+中文分词
-def mysearch(request):
-    return (request,'myBlog/')
+@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
+def resume(request):
+    return render(request,'myBlog/resume.html')
 
