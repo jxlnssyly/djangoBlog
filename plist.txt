@@ -1,0 +1,15 @@
+certifi==2017.11.5
+chardet==3.0.4
+Django==1.8.2
+django-haystack==2.6.1
+django-simditor==0.0.6
+django-tinymce==2.4.0
+idna==2.6
+jieba==0.39
+MySQL-python==1.2.5
+olefile==0.44
+Pillow==4.2.1
+psycopg2==2.7.3.1
+requests==2.18.4
+urllib3==1.22
+Whoosh==2.7.4
