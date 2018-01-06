@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'^program/$',views.program),
     url(r'^blog/$',views.blog),
     url(r'^detail/(?P<id>[0-9]+)/$',views.detail),
-
+    url(r'^life/$',views.life),
+    url(r'mysearch/$',views.mysearch),
 ]

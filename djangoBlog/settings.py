@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'myBlog',
-    'simditor',
+    'simditor',# 编辑器
+    'haystack',# 全文检索
 
 )
 
@@ -82,7 +83,7 @@ WSGI_APPLICATION = 'djangoBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'article',
+        'NAME': 'my_blog',
         'USER':'username',
         'PASSWORD':'123456',
         'HOST':'127.0.0.1',
@@ -134,3 +135,22 @@ SIMDITOR_CONFIGS = {
         'fileKey': 'upload',
     }
 }
+# 缓存设置
+CACHES={
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'myblog_cache_table',
+        'TIMEOUT': 36000,
+    }
+}
+
+# 搜索设置
+HAYSTACK_CONNECTIONS = {
+    'default': {
+        'ENGINE': 'haystack.backends.whoosh_cn_backend.WhooshEngine',
+        'PATH': os.path.join(BASE_DIR, 'whoosh_index'),
+    }
+}
+
+#自动生成索引
+HAYSTACK_SIGNAL_PROCESSOR = 'haystack.signals.RealtimeSignalProcessor'

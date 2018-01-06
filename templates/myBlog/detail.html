@@ -25,7 +25,9 @@
 										<a href="#" class="author"><span class="name">Scott</span><img src="{% static "myBlog/images/avatar.jpg"%}" alt="{% static "myBlog/images/avatar.jpg"%}" /></a>
 									</div>
 								</header>
-{#								<a href="#" class="image featured"><img src="{% static "myBlog/images/pic01.jpg"%}" alt="" /></a>#}
+                                {% if item.titlePage  %}
+								    <a href="/detail/{{ item.id }}/" class="image featured"><img src="{{ item.titlePage.url }}" alt="" /></a>
+                                {% endif %}
 								<p >{{ item.content | safe }}</p>
 								<footer>
 									<ul class="actions">

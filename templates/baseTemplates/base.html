@@ -1,107 +1,113 @@
 {% load staticfiles %}
 
 <html>
-	<head>
-		<title>{% block title %}{% endblock %}</title>
-		<meta charset="utf-8" />
-		<meta http-equiv="content-language" content="zh-CN" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--[if lte IE 8]><script src="{% static "myBlog/assets/js/ie/html5shiv.js" %}"></script><![endif]-->
-		<link rel="stylesheet" href="{% static "myBlog/assets/css/main.css" %}" />
-		<!--[if lte IE 9]><link rel="stylesheet" href="{% static "myBlog/assets/css/ie9.css" %}" /><![endif]-->
-		<!--[if lte IE 8]><link rel="stylesheet" href="{% static "myBlog/assets/css/ie8.css" %}"  /><![endif]-->
-	</head>
-	<body>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="content-language" content="zh-CN"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!--[if lte IE 8]><script src="{% static "myBlog/assets/js/ie/html5shiv.js" %}"></script><![endif]-->
+    <link rel="stylesheet" href="{% static "myBlog/assets/css/main.css" %}"/>
+    <!--[if lte IE 9]><link rel="stylesheet" href="{% static "myBlog/assets/css/ie9.css" %}" /><![endif]-->
+    <!--[if lte IE 8]><link rel="stylesheet" href="{% static "myBlog/assets/css/ie8.css" %}"  /><![endif]-->
+</head>
+<body>
 
 
-
-    <!-- Scripts -->
-			<script src="{% static "myBlog/assets/js/jquery.min.js" %}" ></script>
-			<script src="{% static "myBlog/assets/js/skel.min.js" %}" ></script>
-			<script src="{% static "myBlog/assets/js/util.js" %}" ></script>
-			<!--[if lte IE 8]><script src="{% static "myBlog/assets/js/ie/respond.min.js" %}" ></script><![endif]-->
-			<script src="{% static "myBlog/assets/js/main.js" %}" ></script>
+<!-- Scripts -->
+<script src="{% static "myBlog/assets/js/jquery.min.js" %}"></script>
+<script src="{% static "myBlog/assets/js/skel.min.js" %}"></script>
+<script src="{% static "myBlog/assets/js/util.js" %}"></script>
+<!--[if lte IE 8]><script src="{% static "myBlog/assets/js/ie/respond.min.js" %}" ></script><![endif]-->
+<script src="{% static "myBlog/assets/js/main.js" %}"></script>
 <!-- Wrapper -->
-			<div id="wrapper">
+<div id="wrapper">
 
-				<!-- Header -->
-					<header id="header">
-						<h1><a href="/">细 雨 听 风</a></h1>
-						<nav class="links">
-							<ul>
-                                <li><a href="/program/">编程</a></li>
-								<li><a href="/blog/">博客</a></li>
-                                <li><a href="#">生活</a></li>
-								<li><a href="/comment/">留言</a></li>
-								<li><a href="#">关于我</a></li>
-							</ul>
-						</nav>
-						<nav class="main">
-							<ul>
-								<li class="search">
-									<a class="fa-search" href="#search">Search</a>
-									<form id="search" method="get" action="#">
-										<input type="text" name="query" placeholder="Search" />
-									</form>
-								</li>
-								<li class="menu">
-									<a class="fa-bars" href="#menu">Menu</a>
-								</li>
-							</ul>
-						</nav>
-					</header>
-                    				<!-- Menu -->
-					<section id="menu">
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="/">细 雨 听 风</a></h1>
+        <nav class="links">
+            <ul>
+                <li><a href="/program/">编程</a></li>
+                <li><a href="/blog/">博客</a></li>
+                <li><a href="/life/">生活</a></li>
+                <li><a href="/comment/">留言</a></li>
+                <li><a href="#">关于我</a></li>
+            </ul>
+        </nav>
+        <nav class="main">
+            <ul>
+                <li class="search">
+                    <a class="fa-search" href="#search">Search</a>
 
-						<!-- Search -->
-							<section>
-								<form class="search" method="get" action="#">
-									<input type="text" name="query" placeholder="Search" />
-								</form>
-							</section>
+                    <form id="search" method="get" action="/search/">
+                        <input type="text" name="q" placeholder="Search"/>
+                    </form>
+                </li>
+                <li class="menu">
+                    <a class="fa-bars" href="#menu">Menu</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Menu -->
+    <section id="menu">
 
-						<!-- Links -->
-							<section>
-								<ul class="links">
-                                    <li>
-										<a href="/program/">
-											<h3>编程</h3>
-											<p>Objective-C、Python等</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>博客</h3>
-											<p>个人博客列表</p>
-										</a>
-									</li>
+        <!-- Search -->
+        <section>
+            <form id="search" method="get" action="/search/">
+                <input type="text" name="q" placeholder="Search"/>
+            </form>
+        </section>
 
-									<li>
-										<a href="#">
-											<h3>生活</h3>
-											<p>记录生活感悟、点滴</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<h3>关于我</h3>
-											<p>与我取得联系</p>
-										</a>
-									</li>
-								</ul>
-							</section>
+        <!-- Links -->
+        <section>
+            <ul class="links">
+                <li>
+                    <a href="/program/">
+                        <h3>编程</h3>
 
-						<!-- Actions -->
-{#							<section>#}
-{#								<ul class="actions vertical">#}
-{#									<li><a href="#" class="button big fit">Log In</a></li>#}
-{#								</ul>#}
-{#							</section>#}
+                        <p>Objective-C、Python等</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="/blog/">
+                        <h3>博客</h3>
 
-					</section>
-             {% block body %}
+                        <p>个人博客列表</p>
+                    </a>
+                </li>
 
-            {% endblock %}
-            </div>
-	</body>
+                <li>
+                    <a href="/life/">
+                        <h3>生活</h3>
+
+                        <p>记录生活感悟、点滴</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <h3>关于我</h3>
+
+                        <p>与我取得联系</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Actions -->
+        {#							<section>#}
+        {#								<ul class="actions vertical">#}
+        {#									<li><a href="#" class="button big fit">Log In</a></li>#}
+        {#								</ul>#}
+        {#							</section>#}
+
+    </section>
+    {% block body %}
+
+    {% endblock %}
+</div>
+
+</body>
 </html>
+

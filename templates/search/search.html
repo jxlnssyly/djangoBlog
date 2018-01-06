@@ -1,0 +1,73 @@
+{% extends 'baseTemplates/base.html' %}
+
+{% load custom %}
+
+{% load staticfiles %}
+{% block body %}
+    <div id="main">
+
+        {% if query %}
+
+            <h3>搜索结果如下：</h3>
+            {% for item in page.object_list %}
+                <article class="post">
+                    <header>
+                        <div class="title">
+                            <h2><a href="/detail/{{ item.object.id }}/">{{ item.object.title }}</a></h2>
+
+                            <p>{{ item.object.name }}</p>
+                        </div>
+                        <div class="meta">
+                            <time class="published"
+                                  datetime="{{ item.object.created_at }}">{{ item.object.created_at.month | eng_month }} {{ item.created_at.day }}, {{ item.created_at.year }}</time>
+                            <a href="#" class="author"><span class="name">Scott</span><img
+                                    src="{% static "myBlog/images/avatar.jpg" %}"
+                                    alt="{% static "myBlog/images/avatar.jpg" %}"/></a>
+                        </div>
+                    </header>
+                    {% if item.titlePage %}
+                        <a href="/detail/{{ item.objectid }}/" class="image featured"><img
+                                src="{{ item.object.titlePage.url }}" alt=""/></a>
+                    {% endif %}
+                    <p id="content{{ forloop.counter }}">{{ item.object.get_desc }}</p>
+                    <footer>
+                        <ul class="actions">
+                        </ul>
+                        <ul class="stats">
+                            <li><a href="/detail/{{ item.object.id }}/">General</a></li>
+                            <li><a href="javascript:void(0);" class="icon fa-heart">{{ item.object.get_likes }}</a></li>
+                            <li><a href="/detail/{{ item.object.id }}/#SOHUCS" class="icon fa-comment"></a></li>
+                        </ul>
+                    </footer>
+                </article>
+
+            {% empty %}
+                <p>啥也没找到</p>
+            {% endfor %}
+
+            {% if page.has_previous or page.has_next %}
+
+                <ul class="actions pagination">
+
+                    {% if page.has_previous %}
+                        <li><a href="?page={{ page.previous_page_number }}" class="button big previous">Previous
+                            Page</a></li>
+                    {% else %}
+
+                        <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+
+                    {% endif %}
+
+                    {% if page.has_next %}
+                        <li><a href="?page={{ page.next_page_number }}" class="button big next">Next Page</a></li>
+                    {% else %}
+                        <li><a href="#" class="disabled button big next">Next Page</a></li>
+                    {% endif %}
+                </ul>
+
+
+
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock body %}

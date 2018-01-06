@@ -11,4 +11,3 @@ admin.site.register(Articles,ArticlesAdmin)
 class LiveAdmin(admin.ModelAdmin):
     list_display = ['title','id']
 
-admin.site.register(Life,LiveAdmin)

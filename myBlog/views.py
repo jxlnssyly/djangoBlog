@@ -6,6 +6,7 @@ import json
 from django.core.paginator import *
 from django.core import serializers
 from django.http import HttpResponse
+from joke import Joke
 
 def index(request):
 
@@ -33,10 +34,16 @@ def index(request):
 
 
     # 首页生活数据
-    live = Life.objects.order_by('-created_at')
+    live = Articles.objects.filter(keyword="生活").order_by('-created_at')
     pLive = Paginator(live, 4)
     listLive = pLive.page(1)
 
+
+    # 首页笑话
+    joke = Joke()
+
+    joke_data = joke.get_joke()
+    # return HttpResponse(joke_data)
 
     contex = {
         'dataList': list2,
@@ -46,9 +53,9 @@ def index(request):
         'prevPage': prevPage,
         'jsonData': serializers.serialize("json",list2),
         'liveList': listLive,
+        'joke': joke_data,
     }
 
-    # return HttpResponse(listLive)
     return render(request,'myBlog/index.html',contex)
 
 
@@ -95,6 +102,7 @@ def detail(request,id):
         'pre_id': pre_id,
         'pre_title':pre_title,
         'next_title': next_title,
+        'detailUrl': 'detail',
     }
     return render(request,'myBlog/detail.html',contex)
 
@@ -106,4 +114,16 @@ def blog(request):
     }
     return render(request, 'myBlog/program.html', contex)
 
+
+def life(request):
+
+    queryList = Articles.objects.filter(keyword="生活").order_by("-created_at")
+    contex = {
+        'dataList': queryList,
+    }
+    return render(request,'myBlog/life.html',contex)
+
+# 全文检索+中文分词
+def mysearch(request):
+    return (request,'myBlog/')
 
