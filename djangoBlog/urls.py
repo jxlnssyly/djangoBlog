@@ -25,4 +25,5 @@ urlpatterns = [
     url(r'^simditor/', include('simditor.urls')),
     url(r'^favicon.ico$',RedirectView.as_view(url=r'static/favicon.ico')),
     url(r'^search/', include('haystack.urls')),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}), 
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

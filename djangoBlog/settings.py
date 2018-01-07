@@ -27,7 +27,7 @@ SECRET_KEY = '5((z7f71@f5#)#e*!lf*f*z11k0x*7coqt(_&guv8i*_%o5l^('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*',]
 
 
 # Application definition
@@ -116,7 +116,8 @@ STATICFILES_DIRS= [
 ]
 
 # 上传文件路径
-MEDIA_ROOT=os.path.join(BASE_DIR,"static/media")
+#MEDIA_ROOT=os.path.join(BASE_DIR,"static/media")
+MEDIA_ROOT='/var/www/djangoBlog/media'
 MEDIA_URL = '/media/'
 
 # editor setting

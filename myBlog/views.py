@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from joke import Joke
 from django.views.decorators.cache import cache_page
 
-@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
+#@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def index(request):
 
     # 首页博客数据
