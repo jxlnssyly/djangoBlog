@@ -1,7 +1,7 @@
 
-de_bug = True
+debug = False
 
-if de_bug == True:
+if debug == True:
     from debug_setting import *
 else:
     from production_setting import *
