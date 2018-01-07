@@ -14,34 +14,7 @@
 					<div id="main">
                         {% for item in dataList %}
                             <!-- Post -->
-							<article class="post">
-
-								<header>
-									<div class="title">
-										<h2><a href="/detail/{{ item.id }}/">{{ item.title }}</a></h2>
-										<p>{{ item.name }}</p>
-									</div>
-									<div class="meta">
-										<time class="published" datetime="{{ item.created_at }}">{{ item.created_at.month | eng_month }} {{ item.created_at.day }}, {{ item.created_at.year }}</time>
-										<a href="/resume/" class="author"><span class="name">Scott</span><img src="{% static "myBlog/images/avatar.jpg"%}" alt="{% static "myBlog/images/avatar.jpg"%}" /></a>
-									</div>
-								</header>
-                                {% if item.titlePage  %}
-								    <a href="/detail/{{ item.id }}/" class="image featured"><img src="{{ item.titlePage.url }}" alt="" /></a>
-                                {% endif %}
-
-								<p id="content{{ forloop.counter }}">{{ item.get_desc }}</p>
-								<footer>
-									<ul class="actions">
-{#										<li><a href="javascript:void(0);" class="button big" index="{{ forloop.counter }}"></a></li>#}
-									</ul>
-									<ul class="stats">
-										<li><a href="/detail/{{ item.id }}/">General</a></li>
-{#										<li><a href="javascript:void(0);" class="icon fa-heart">{{ item.get_likes }}</a></li>#}
-										<li><a href="/detail/{{ item.id }}/#SOHUCS" class="icon fa-comment"></a></li>
-									</ul>
-								</footer>
-							</article>
+							{% include 'baseTemplates/_article.html' %}
                         {% endfor %}
 					</div>
 

@@ -1,0 +1,39 @@
+<!-- Pagination -->
+
+<ul class="actions pagination">
+
+    {% if is_search %}
+        {% if page.has_previous or page.has_next %}
+
+
+            {% if page.has_previous %}
+                <li><a href="/search/?q={{ query }}&page={{ page.previous_page_number }}" class="button big previous">Previous
+                    Page</a></li>
+            {% else %}
+
+                <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+
+            {% endif %}
+
+            {% if page.has_next %}
+                <li><a href="/search/?q={{ query }}&page={{ page.next_page_number }}" class="button big next">Next
+                    Page</a></li>
+            {% else %}
+                <li><a href="#" class="disabled button big next">Next Page</a></li>
+            {% endif %}
+        {% endif %}
+    {% else %}
+        {% if has_pre %}
+            <li><a href="?page={{ prevPage }}" class="button big previous">Previous Page</a></li>
+        {% else %}
+            <li><a href="#" class="disabled button big previous">Previous Page</a></li>
+        {% endif %}
+
+        {% if has_next %}
+            <li><a href="?page={{ nextPage }}" class="button big next">Next Page</a></li>
+        {% else %}
+            <li><a href="#" class="disabled button big next">Next Page</a></li>
+        {% endif %}
+    {% endif %}
+</ul>
+
