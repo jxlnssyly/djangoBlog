@@ -1,5 +1,4 @@
-
-debug = False
+debug = True
 
 if debug == True:
     from debug_setting import *

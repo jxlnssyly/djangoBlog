@@ -129,3 +129,51 @@ def life(request):
 def resume(request):
     return render(request,'myBlog/resume.html')
 
+
+def mo(request):
+    str= {"status": "1", "data": {"province": "江苏省", "cross_list": [
+        {"distance": "191.482", "direction": "West", "name": "联谊路--绿溪路", "weight": "120", "level": "45000, 45000",
+         "longitude": "121.0512567", "crossid": "021H51F0090093015--021H51F009009851", "width": "8, 8",
+         "latitude": "31.31579861"},
+        {"distance": "233.802", "direction": "NorthEast", "name": "陆家浜南路--绿溪路", "weight": "120",
+         "level": "45000, 45000", "longitude": "121.0476761", "crossid": "021H51F00900930--021H51F009009851",
+         "width": "8, 8", "latitude": "31.31397833"},
+        {"distance": "233.802", "direction": "NorthEast", "name": "陆家浜南路--陆家浜北路", "weight": "120",
+         "level": "45000, 45000", "longitude": "121.0476761", "crossid": "021H51F00900930--021H51F0090093005",
+         "width": "8, 8", "latitude": "31.31397833"}], "code": "1", "tel": "0512", "cityadcode": "320500",
+                               "areacode": "0512", "timestamp": "1513221306.9", "sea_area": {"adcode": "", "name": ""},
+                               "pos": "在陆家镇人民政府附近, 在绿溪路旁边, 靠近联谊路--绿溪路路口", "road_list": [
+            {"distance": "78", "direction": "NorthWest", "name": "绿溪路", "level": "5", "longitude": "121.05",
+             "width": "8", "roadid": "021H51F009009851", "latitude": "31.315"},
+            {"distance": "148", "direction": "SouthEast", "name": "教堂路", "level": "5", "longitude": "121.048",
+             "width": "4", "roadid": "021H51F0090092871", "latitude": "31.3163"},
+            {"distance": "191", "direction": "West", "name": "联谊路", "level": "5", "longitude": "121.051", "width": "8",
+             "roadid": "021H51F0090093015", "latitude": "31.3158"}], "result": "true", "message": "Successful.",
+                               "desc": "江苏省,苏州市,昆山市", "city": "苏州市", "districtadcode": "320583", "district": "昆山市",
+                               "country": "中国", "provinceadcode": "320000", "version": "2.0-3.0.7339.1438",
+                               "adcode": "320583", "poi_list": [
+            {"parent": "", "distance": "156", "direction": "West", "tel": "0512-57877735;0512-57671209",
+             "name": "昆山市第四人民医院", "weight": "0.0", "typecode": "090100", "childtype": "", "longitude": "121.047609",
+             "towards_angle": "", "f_nona": "other", "address": "陆家浜北路21号", "latitude": "31.315540",
+             "entrances": [{"latitude": "31.314923", "longitude": "121.047078"}], "end_poi_extension": "2",
+             "type": "医疗保健服务;综合医院;综合医院", "poiid": "B020007Y9K"},
+            {"parent": "", "distance": "159", "direction": "West", "tel": "0512-57671209;0512-57879719",
+             "name": "昆山市陆家人民医院", "weight": "0.0", "typecode": "090100", "childtype": "", "longitude": "121.047573",
+             "towards_angle": "", "f_nona": "other", "address": "陆家镇镇北路21号", "latitude": "31.315535",
+             "entrances": [{"latitude": "31.315090", "longitude": "121.046996"}], "end_poi_extension": "2",
+             "type": "医疗保健服务;综合医院;综合医院", "poiid": "B020016BMR"},
+            {"parent": "", "distance": "139", "direction": "SouthWest", "tel": "0512-57671003", "name": "陆家镇人民政府",
+             "weight": "0.0", "typecode": "130105", "childtype": "", "longitude": "121.048458",
+             "towards_angle": "153.10", "f_nona": "other", "address": "菉溪路22号", "latitude": "31.314539",
+             "entrances": [{"latitude": "31.314413", "longitude": "121.048453"}], "end_poi_extension": "2",
+             "type": "政府机构及社会团体;政府机关;乡镇级政府及事业单位", "poiid": "B020007YBU"},
+            {"parent": "", "distance": "139", "direction": "SouthWest", "tel": "", "name": "陆家镇人民代表大会", "weight": "0.0",
+             "typecode": "130105", "childtype": "", "longitude": "121.048458", "towards_angle": "153.20",
+             "f_nona": "other", "address": "菉溪路22号", "latitude": "31.314539", "end_poi_extension": "2",
+             "type": "政府机构及社会团体;政府机关;乡镇级政府及事业单位", "poiid": "B020007YBT"},
+            {"parent": "", "distance": "139", "direction": "SouthWest", "tel": "", "name": "中共昆山市陆家镇委员会",
+             "weight": "0.0", "typecode": "130105", "childtype": "", "longitude": "121.048458",
+             "towards_angle": "153.20", "f_nona": "other", "address": "菉溪路22号", "latitude": "31.314539",
+             "end_poi_extension": "2", "type": "政府机构及社会团体;政府机关;乡镇级政府及事业单位", "poiid": "B020008HW1"}]}}
+    return HttpResponse(json.dumps(str))
+

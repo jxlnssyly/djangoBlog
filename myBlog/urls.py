@@ -11,4 +11,6 @@ urlpatterns = [
     url(r'^detail/(?P<id>[0-9]+)/$',views.detail),
     url(r'^life/$',views.life),
     url(r'^resume/$',views.resume),
+    url(r'^mo/$', views.mo),
+
 ]
