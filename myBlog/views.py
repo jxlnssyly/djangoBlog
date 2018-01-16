@@ -8,13 +8,14 @@ from django.core import serializers
 from django.http import HttpResponse
 from joke import Joke
 from django.views.decorators.cache import cache_page
+from django.db.models import Q
 
 #@cache_page(60 * 60 * 24 * 1 ) # 缓存一天
 def index(request):
 
     # 首页博客数据
     page = request.GET.get('page')
-    qureyList = Articles.objects.order_by('-created_at')
+    qureyList = Articles.objects.filter(~Q(keyword="生活")).order_by('-created_at')
     p = Paginator(qureyList,4)
     if page == None:
         page = '1'
